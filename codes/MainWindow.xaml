@@ -1,0 +1,25 @@
+﻿<Window x:Name="mainWindow" x:Class="WlanHotspot.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WlanHotspot"
+        mc:Ignorable="d"
+        Title="Wifi热点工具" Height="300" Width="400" Closing="exiting">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <!--提示语-->
+        <TextBlock x:Name="textBlock0" HorizontalAlignment="Left" Height="20" Margin="0,20,0,0" TextWrapping="Wrap" Text="热点名称" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Height="20" Margin="0,50,0,0" TextWrapping="Wrap" Text="设定密码" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Height="20" Margin="0,80,0,0" TextWrapping="Wrap" Text="上网方式" VerticalAlignment="Top"/>
+        <!--文本框-->
+        <TextBox x:Name="name" HorizontalAlignment="Left" Height="20" Margin="60,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
+        <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Height="20" Margin="60,50,0,0" VerticalAlignment="Top" Width="100"/>
+        <!--选择接入Internet的网卡-->
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="60,80,0,0" DropDownOpened="ChooseAdapter" DropDownClosed="AdapterChoosed"/>
+        <!--按钮-->
+        <Button x:Name="button" Content="开启热点" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="10,110,0,0" Click="click" IsEnabled="False"/>
+        <Button x:Name="button1" Content="关闭热点" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="90,110,0,0" Click="hotspotoff"/>
+        <!--显示状态-->
+        <TextBox x:Name="status" HorizontalAlignment="Left" Height="60" Margin="0,140,0,0" TextWrapping="Wrap" Text="程序初始化中...." VerticalAlignment="Top" Width="150" IsReadOnly="True"/>
+    </Grid>
+</Window>
