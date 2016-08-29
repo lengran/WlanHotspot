@@ -27,13 +27,16 @@ namespace WlanHotspot
     {
         private List<string> Adapters = new List<string>();
         private string sharedAdapter;
-        private string viturialAdapter;
+        //private string viturialAdapter;
+        private double savedWidth, savedHeight;
 
         public MainWindow()
         {
             InitializeComponent();
             check();
             settingLoader();
+            savedWidth = mainWindow.Width;
+            savedHeight = mainWindow.Height;
         }
 
         private void click(object sender, RoutedEventArgs e)
@@ -191,7 +194,16 @@ namespace WlanHotspot
                 INetSharingConfiguration sharingCfg = manager.INetSharingConfigurationForINetConnection[c];
                 if (props.Name == connectionToShare)
                 {
-                    sharingCfg.EnableSharing(tagSHARINGCONNECTIONTYPE.ICSSHARINGTYPE_PUBLIC);
+                    try
+                    {
+                        sharingCfg.EnableSharing(tagSHARINGCONNECTIONTYPE.ICSSHARINGTYPE_PUBLIC);
+
+                    }
+                    catch (Exception e)
+                    {
+                        status.Text += "\n未能开启网络共享，可能热点无法联网……\n我也不知道为啥，不过有时候多重启几次就好了……";
+                        return;
+                    }
                     sharedAdapter = props.Name;
                 }
                 else if (props.DeviceName == "Microsoft Hosted Network Virtual Adapter")
@@ -246,6 +258,18 @@ namespace WlanHotspot
             {
                 return null;
             }
+        }
+
+        private void changeSize(object sender, SizeChangedEventArgs e)
+        {
+            name.Width += (mainWindow.Width - savedWidth);
+            passwordBox.Width += (mainWindow.Width - savedWidth);
+            comboBox.Width += (mainWindow.Width - savedWidth);
+            //button1.Margin = (90 + mainWindow.Width - 400).ToString() + ",110,0,0";
+            status.Width += (mainWindow.Width - savedWidth);
+            status.Height += (mainWindow.Height - savedHeight);
+            savedHeight = mainWindow.Height;
+            savedWidth = mainWindow.Width;
         }
     }
 }
