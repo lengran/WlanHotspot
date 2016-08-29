@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WlanHotspot"
         mc:Ignorable="d"
-        Title="Wifi热点工具" Height="300" Width="400" Closing="exiting">
+        Title="Wifi热点工具" Height="300" Width="400" Closing="exiting" SizeChanged="changeSize">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
         <!--提示语-->
         <TextBlock x:Name="textBlock0" HorizontalAlignment="Left" Height="20" Margin="0,20,0,0" TextWrapping="Wrap" Text="热点名称" VerticalAlignment="Top"/>
@@ -18,7 +18,7 @@
         <ComboBox x:Name="comboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="60,80,0,0" DropDownOpened="ChooseAdapter" DropDownClosed="AdapterChoosed"/>
         <!--按钮-->
         <Button x:Name="button" Content="开启热点" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="10,110,0,0" Click="click" IsEnabled="False"/>
-        <Button x:Name="button1" Content="关闭热点" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="90,110,0,0" Click="hotspotoff"/>
+        <Button x:Name="button1" Content="关闭热点" HorizontalAlignment="Right" VerticalAlignment="Top" Width="60" Margin="0,110,10,0" Click="hotspotoff"/>
         <!--显示状态-->
         <TextBox x:Name="status" HorizontalAlignment="Left" Height="60" Margin="0,140,0,0" TextWrapping="Wrap" Text="程序初始化中...." VerticalAlignment="Top" Width="150" IsReadOnly="True"/>
     </Grid>
